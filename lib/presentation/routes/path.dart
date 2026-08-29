@@ -1,4 +1,4 @@
 class Path {
-  static get home => '/';
-  static get login => '/login';
+  static String get home => '/';
+  static String get login => '/login';
 }
