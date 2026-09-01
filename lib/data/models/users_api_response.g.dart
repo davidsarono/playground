@@ -27,12 +27,12 @@ Map<String, dynamic> _$UsersApiResponseToJson(UsersApiResponse instance) =>
     };
 
 UserItemApi _$UserItemApiFromJson(Map<String, dynamic> json) => UserItemApi(
-      id: (json['id'] as num).toInt(),
-      email: json['email'] as String,
-      firstName: json['first_name'] as String,
-      lastName: json['last_name'] as String,
-      avatar: json['avatar'] as String,
-    );
+  id: (json['id'] as num).toInt(),
+  email: json['email'] as String,
+  firstName: json['first_name'] as String,
+  lastName: json['last_name'] as String,
+  avatar: json['avatar'] as String,
+);
 
 Map<String, dynamic> _$UserItemApiToJson(UserItemApi instance) =>
     <String, dynamic>{
