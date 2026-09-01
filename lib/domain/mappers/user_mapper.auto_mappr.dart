@@ -67,20 +67,14 @@ class $UserMapper implements _i1.AutoMapprInterface {
   TARGET? tryConvert<SOURCE, TARGET>(
     SOURCE? model, {
     void Function(Object error, StackTrace stackTrace, SOURCE? source)?
-        onMappingError,
+    onMappingError,
   }) {
     if (canConvert<SOURCE, TARGET>(recursive: false)) {
-      return _safeConvert(
-        model,
-        onMappingError: onMappingError,
-      );
+      return _safeConvert(model, onMappingError: onMappingError);
     }
     for (final mappr in _delegates) {
       if (mappr.canConvert<SOURCE, TARGET>()) {
-        return mappr.tryConvert(
-          model,
-          onMappingError: onMappingError,
-        );
+        return mappr.tryConvert(model, onMappingError: onMappingError);
       }
     }
 
@@ -112,18 +106,16 @@ class $UserMapper implements _i1.AutoMapprInterface {
   Iterable<TARGET?> tryConvertIterable<SOURCE, TARGET>(
     Iterable<SOURCE?> model, {
     void Function(Object error, StackTrace stackTrace, SOURCE? source)?
-        onMappingError,
+    onMappingError,
   }) {
     if (canConvert<SOURCE, TARGET>(recursive: false)) {
       return model.map<TARGET?>(
-          (item) => _safeConvert(item, onMappingError: onMappingError));
+        (item) => _safeConvert(item, onMappingError: onMappingError),
+      );
     }
     for (final mappr in _delegates) {
       if (mappr.canConvert<SOURCE, TARGET>()) {
-        return mappr.tryConvertIterable(
-          model,
-          onMappingError: onMappingError,
-        );
+        return mappr.tryConvertIterable(model, onMappingError: onMappingError);
       }
     }
 
@@ -155,7 +147,7 @@ class $UserMapper implements _i1.AutoMapprInterface {
   List<TARGET?> tryConvertList<SOURCE, TARGET>(
     Iterable<SOURCE?> model, {
     void Function(Object error, StackTrace stackTrace, SOURCE? source)?
-        onMappingError,
+    onMappingError,
   }) {
     if (canConvert<SOURCE, TARGET>(recursive: false)) {
       return tryConvertIterable<SOURCE, TARGET>(
@@ -165,10 +157,7 @@ class $UserMapper implements _i1.AutoMapprInterface {
     }
     for (final mappr in _delegates) {
       if (mappr.canConvert<SOURCE, TARGET>()) {
-        return mappr.tryConvertList(
-          model,
-          onMappingError: onMappingError,
-        );
+        return mappr.tryConvertList(model, onMappingError: onMappingError);
       }
     }
 
@@ -200,7 +189,7 @@ class $UserMapper implements _i1.AutoMapprInterface {
   Set<TARGET?> tryConvertSet<SOURCE, TARGET>(
     Iterable<SOURCE?> model, {
     void Function(Object error, StackTrace stackTrace, SOURCE? source)?
-        onMappingError,
+    onMappingError,
   }) {
     if (canConvert<SOURCE, TARGET>(recursive: false)) {
       return tryConvertIterable<SOURCE, TARGET>(
@@ -210,10 +199,7 @@ class $UserMapper implements _i1.AutoMapprInterface {
     }
     for (final mappr in _delegates) {
       if (mappr.canConvert<SOURCE, TARGET>()) {
-        return mappr.tryConvertSet(
-          model,
-          onMappingError: onMappingError,
-        );
+        return mappr.tryConvertSet(model, onMappingError: onMappingError);
       }
     }
 
@@ -242,19 +228,13 @@ class $UserMapper implements _i1.AutoMapprInterface {
   TARGET? _safeConvert<SOURCE, TARGET>(
     SOURCE? model, {
     void Function(Object error, StackTrace stackTrace, SOURCE? source)?
-        onMappingError,
+    onMappingError,
   }) {
     if (!useSafeMapping<SOURCE, TARGET>()) {
-      return _convert(
-        model,
-        canReturnNull: true,
-      );
+      return _convert(model, canReturnNull: true);
     }
     try {
-      return _convert(
-        model,
-        canReturnNull: true,
-      );
+      return _convert(model, canReturnNull: true);
     } catch (e, s) {
       onMappingError?.call(e, s, model);
       return null;
@@ -272,8 +252,9 @@ class $UserMapper implements _i1.AutoMapprInterface {
     final model = input;
     if (model == null) {
       throw Exception(
-          r'Mapping UserItemApi → User failed because UserItemApi was null, and no default value was provided. '
-          r'Consider setting the whenSourceIsNull parameter on the MapType<UserItemApi, User> to handle null values during mapping.');
+        r'Mapping UserItemApi → User failed because UserItemApi was null, and no default value was provided. '
+        r'Consider setting the whenSourceIsNull parameter on the MapType<UserItemApi, User> to handle null values during mapping.',
+      );
     }
     return _i3.User(
       id: model.id,

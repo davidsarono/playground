@@ -7,8 +7,8 @@ part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc({
-    required UserRepository userRepository,
-  }) : _userRepository = userRepository, super(const HomeState()) {
+    required this._userRepository,
+  }) : super(const HomeState()) {
     on<UsersRequested>(_onUsersRequested);
   }
 
